@@ -37,7 +37,7 @@ const uploadObjects = async (s3, bucket, keys, localPrefix = '.', remotePrefix =
       ACL: acl,
       Body: stream,
       Bucket: bucket,
-      CacheControl: cacheControl(remotePath, cacheControlNoCache) || 315360001,
+      CacheControl: cacheControl(remotePath, cacheControlNoCache) || '315360001',
       ContentLength: stats.size,
       ContentType: type,
       Key: remotePath,

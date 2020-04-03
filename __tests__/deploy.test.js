@@ -67,7 +67,7 @@ describe('deploy', () => {
 
       expect(mockS3.lastUploadParams.ACL).toBeUndefined();
       expect(mockS3.lastUploadParams.Body).toBeInstanceOf(fs.ReadStream);
-      expect(mockS3.lastUploadParams.CacheControl).toBe(315360001);
+      expect(mockS3.lastUploadParams.CacheControl).toBe('315360001');
       expect(mockS3.lastUploadParams.ContentLength).toBe(171);
       expect(mockS3.lastUploadParams.ContentType).toBe('text/html');
       expect(mockS3.lastUploadParams.Key).toBe(uploaded[1]);
@@ -84,7 +84,7 @@ describe('deploy', () => {
 
       expect(mockS3.lastUploadParams.ACL).toBe('public-read');
       expect(mockS3.lastUploadParams.Body).toBeInstanceOf(fs.ReadStream);
-      expect(mockS3.lastUploadParams.CacheControl).toBe(315360001);
+      expect(mockS3.lastUploadParams.CacheControl).toBe('315360001');
       expect(mockS3.lastUploadParams.ContentLength).toBe(171);
       expect(mockS3.lastUploadParams.ContentType).toBe('text/html');
       expect(mockS3.lastUploadParams.Key).toBe(uploaded[1]);
