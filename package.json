@@ -1,28 +1,9 @@
 {
-  "name": "deploy-aws-s3-cloudfront",
-  "version": "2.3.1",
-  "description": "Syncs a local directory to an AWS S3 bucket, optionally invalidating affected CloudFront paths.",
-  "keywords": [
-    "aws",
-    "s3",
-    "cloudfront",
-    "deploy"
-  ],
-  "homepage": "https://github.com/apancutt/deploy-aws-s3-cloudfront#readme",
-  "bugs": {
-    "url": "https://github.com/apancutt/deploy-aws-s3-cloudfront/issues"
-  },
-  "author": "Adam Pancutt <adam@pancutt.com>",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/apancutt/deploy-aws-s3-cloudfront.git"
-  },
+  "author": "Pol Penaloza <polpenaloza@gmail.com>",
   "bin": "./bin/deploy-aws-s3-cloudfront.js",
-  "files": [
-    "bin",
-    "src"
-  ],
+  "bugs": {
+    "url": "https://github.com/polpenaoza/aws-sync-n-invalidate/issues"
+  },
   "dependencies": {
     "aws-sdk": "2",
     "colors": "1",
@@ -33,14 +14,11 @@
     "prompt-confirm": "2",
     "yargs": "14"
   },
+  "description": "Syncs a local directory to an AWS S3 bucket, optionally invalidating affected CloudFront paths.",
   "devDependencies": {
     "babel-eslint": "10",
     "eslint": "6",
     "jest": "^24.9.0"
-  },
-  "scripts": {
-    "eslint": "eslint */**/*.js",
-    "test": "jest"
   },
   "eslintConfig": {
     "env": {
@@ -50,13 +28,35 @@
       "jest": true,
       "node": true
     },
-    "parser": "babel-eslint",
-    "extends": "eslint:recommended"
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint"
   },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "homepage": "https://github.com/polpenaloza/aws-sync-n-invalidate#readme",
   "jest": {
     "testPathIgnorePatterns": [
       "/__tests__/mock/",
       "/node_modules/"
     ]
-  }
+  },
+  "keywords": [
+    "aws",
+    "s3",
+    "cloudfront",
+    "deploy"
+  ],
+  "license": "MIT",
+  "name": "aws-sync-n-invalidate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/polpenaloza/aws-sync-n-invalidate.git"
+  },
+  "scripts": {
+    "eslint": "eslint */**/*.js",
+    "test": "jest"
+  },
+  "version": "2.3.2"
 }

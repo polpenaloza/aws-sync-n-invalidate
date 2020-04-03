@@ -22,7 +22,7 @@ const uploadObjects = async (s3, bucket, keys, localPrefix = '.', remotePrefix =
 
     const localPath = localPrefix + key;
     const remotePath = remotePrefix + key;
-    const type = mimeTypes.lookup(localPath) || 'application/octet-stream';
+    const type = localPath.indexOf('.html') ? 'text/html' : mimeTypes.lookup(localPath) || 'application/octet-stream';
     const stats = fs.statSync(localPath);
     const stream = fs.createReadStream(localPath);
 
