@@ -12,6 +12,8 @@ class S3 {
     return promisable({
       Contents: [
         { Key: 'a.txt', ETag: 'abc123' },
+        { Key: 'c', ETag: 'abc123' },
+        { Key: 'c.html', ETag: 'abc123' },
       ],
       ContinuationToken: undefined,
       IsTruncated: false,

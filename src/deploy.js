@@ -20,9 +20,15 @@ const uploadObjects = async (s3, bucket, keys, localPrefix = '.', remotePrefix =
 
   keys.forEach((key) => {
 
-    const localPath = localPrefix + key;
-    const remotePath = remotePrefix + key;
-    const type = localPath.indexOf('.html') ? 'text/html' : mimeTypes.lookup(localPath) || 'application/octet-stream';
+    const hasHtml = key.indexOf('.html');
+    const localPath = (localPrefix + key).split('.html')[0];
+    const remotePath = (remotePrefix + key).split('.html')[0];
+    if (hasHtml) {
+      fs.copyFile(localPrefix + key, localPath, function (err) {
+        if (err) throw err
+      });
+    }
+    const type = hasHtml ? 'text/html' : mimeTypes.lookup(localPath) || 'application/octet-stream';
     const stats = fs.statSync(localPath);
     const stream = fs.createReadStream(localPath);
 
@@ -36,7 +42,7 @@ const uploadObjects = async (s3, bucket, keys, localPrefix = '.', remotePrefix =
       ACL: acl,
       Body: stream,
       Bucket: bucket,
-      CacheControl: cacheControl(remotePath, cacheControlNoCache),
+      CacheControl: cacheControl(remotePath, cacheControlNoCache) || 315360001,
       ContentLength: stats.size,
       ContentType: type,
       Key: remotePath,

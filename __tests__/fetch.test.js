@@ -23,8 +23,16 @@ describe('fetch', () => {
 
     return fetch(mockS3, 'foo', localPrefix).then(({ local, remote }) => {
 
-      expect(local).toEqual({ 'a.txt': 'bf072e9119077b4e76437a93986787ef' });
-      expect(remote).toEqual({ 'a.txt': 'abc123' });
+      expect(local).toEqual({
+        'a.txt': 'd41d8cd98f00b204e9800998ecf8427e',
+        'c': 'a53ebd7a007cc99cc827e7e03f44f206',
+        'c.html': 'a53ebd7a007cc99cc827e7e03f44f206'
+      });
+      expect(remote).toEqual({
+        'a.txt': 'abc123',
+        'c': 'abc123',
+        'c.html': 'abc123',
+      });
 
     });
 

@@ -7,12 +7,13 @@ module.exports = async (local, remote, ignoreDeleted = true) => {
   const deleted = [];
 
   Object.entries(local).forEach(([ key, checksum ]) => {
-    if (!(key in remote)) {
-      info(`New file ${key} will be uploaded`);
-      added.push(key);
-    } else if (checksum !== remote[key]) {
-      info(`Modified file ${key} will be uploaded`);
-      modified.push(key);
+    const modKey = key.split('.html')[0];
+    if (!(modKey in remote)) {
+      info(`New file ${modKey} will be uploaded`);
+      added.push(modKey);
+    } else if (checksum !== remote[modKey]) {
+      info(`Modified file ${modKey} will be uploaded`);
+      modified.push(modKey);
     }
   });
 
