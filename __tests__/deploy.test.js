@@ -7,7 +7,7 @@ describe('deploy', () => {
   let mockLog;
   let mockS3;
 
-  const uploads = [ 'a.txt', 'c.html' ];
+  const uploads = [ 'a.txt', 'c' ];
   const deletes = [ 'b.txt' ];
   const localPrefix = `${__dirname}/mock/local-filesystem`;
 
