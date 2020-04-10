@@ -1,20 +1,20 @@
-# deploy-aws-s3-cloudfront
+# aws-sync-n-invalidate
 
 Syncs a local directory to an AWS S3 bucket, optionally invalidating affected CloudFront paths.
 
 ## Installation
 
-    npm install --save deploy-aws-s3-cloudfront
+    yarn add --dev aws-sync-n-invalidate
 
 ### Authentication
 
 This packages uses the [AWS SDK for Node.js](https://aws.amazon.com/sdk-for-node-js/) and defers authentication to the SDK.
 
-If you are relying on credentials stored in `~/.aws/credentials` you can use `AWS_PROFILE=<profile> deploy-aws-s3-cloudfront ...` to use a custom-named profile.
+If you are relying on credentials stored in `~/.aws/credentials` you can use `AWS_PROFILE=<profile> aws-sync-n-invalidate ...` to use a custom-named profile.
 
 ## Usage
 
-    deploy-aws-s3-cloudfront --bucket <bucket> [options]
+    aws-sync-n-invalidate --bucket <bucket> [options]
 
 ### Options
 
@@ -82,7 +82,7 @@ Add a `deploy` script alias to your `package.json` file:
       ...
       "scripts": {
         ...
-        "deploy": "deploy-aws-s3-cloudfront --bucket my-bucket"
+        "deploy": "aws-sync-n-invalidate --bucket my-bucket"
       }
     }
 
@@ -92,7 +92,7 @@ If you need to pass user or environment-level options that you don't want commit
 
 ## Configuration for [create-react-app](https://github.com/facebook/create-react-app) projects
 
-Pass the `--react` option when deploying apps created using `create-react-app`. This is shortcut for `deploy-aws-s3-cloudfront --source ./build/ --cache-control-no-cache index.html`.
+Pass the `--react` option when deploying apps created using `create-react-app`. This is shortcut for `aws-sync-n-invalidate --source ./build/ --cache-control-no-cache index.html`.
 
 ## Alternatives (and why this package exists!)
 
